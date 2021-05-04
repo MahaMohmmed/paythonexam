@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .make{
+            border: solid;
+            width: 400px;
+            height: 200px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/goback">Logout</a>
+
+    <h1>Hello {{ user.first_name}}! Make a wish</h1>
+
+
+    <div class="make">
+
+        <form action="/wishes/create" method="POST">
+            {% csrf_token %}
+            <p>I wish for :<input type="text" name="name" /></p>
+            <p>Description<input type="text" name="desc" /></p>
+        
+          <button type="submit">submit!</button>
+         <a href="/wishes"><button type="button">cancel!</button></a>
+
+        </form>
+   
+   
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+            {{ message }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

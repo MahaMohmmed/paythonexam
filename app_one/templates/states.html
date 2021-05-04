@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Hello {{ user.first_name}}! These are your stats ! </h1>
+    <a href="/goback">Logout</a>
+    <a href="/wishes"> Dashboard</a>
+    <h2>Total wishes granted so far for all user {{all_granted_by|length}} </h2>
+    <h3> Your granted wishes {{user_add_whish|length}} </h3>
+    <h3>Your pending wishes  {{user_add_whishf|length}}</h3>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login and Registration</title>
+    </head>
+    <style>
+        .LR{
+            display: inline-flex;
+            text-align: center;
+
+        }
+    </style>
+    <body>
+        <h1>Welcome! sign in to Make a wish!</h1>
+        <div class="LR">
+            <div class="L">
+        <h1>Register</h1>
+    
+        <form action="/register" method="POST">
+        {% csrf_token %}
+        <p>First Name<input type="text" name="first_name" /></p>
+        <p>Last Name<input type="text" name="last_name" /></p>
+        <p>Email<input type="email" name="email" /></p>
+        <p>
+            Birthday<input
+            type="date"
+            name="birthday"
+            value="{{today|date:'Y-m-d'}}"
+            />
+        </p>
+        
+        <p>Password<input type="text" name="password" /></p>
+        <p>Confirm Password<input type="text" name="confirm_pw" /></p>
+        <button type="submit">Register</button>
+        </form>
+    </div>
+    <div class="R">
+        <h1>login</h1>
+        <form action="/login" method="POST">
+        {% csrf_token %}
+        <p>Email<input type="email" name="email" /></p>
+        <p>Password<input type="text" name="password" /></p>
+        <button type="submit">Register</button>
+        </form>
+    </div>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+            {{ message }}
+        </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </body>
+    </html>

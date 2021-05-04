@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Edit Recipe</title>
+     <style>
+         .edit{
+            border: solid;
+            width: 400px;
+            height: 200px;
+            padding: 20px;
+         }
+     </style>
+   </head>
+   <body>
+     <a href="/logout">Logout</a>
+     <h1>Hello {{ user.first_name}}! Let's  edit your  wish</h1>
+     <div class="edit">
+     <form action="/wishes/{{wish.id}}/update" method="POST">
+       {% csrf_token %}
+       <p>I wish for <input type="text" name="name" value="{{wish.item_name}}" /></p>
+       <p>Description<input
+           type="text"
+           name="desc"
+           value="{{wish.description}}"/> </p>
+     
+       <button type="submit">Edit!</button>
+       <a href="/wishes"><button type="button">cancel!</button></a>
+
+     </form>
+    </div>
+     {% if messages %}
+     <ul class="messages">
+       {% for message in messages %}
+       <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+         {{ message }}
+       </li>
+       {% endfor %}
+     </ul>
+     {% endif %}
+   </body>
+ </html>
